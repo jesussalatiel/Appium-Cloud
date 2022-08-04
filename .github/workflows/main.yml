@@ -19,4 +19,4 @@ jobs:
          uses: moatazeldebsy/appium-server-gitHub-action@V1.0.5
         
        - name: Run Test
-         uses: mvn clean test
+         run: mvn clean test
