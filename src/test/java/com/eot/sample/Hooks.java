@@ -5,6 +5,7 @@ import io.appium.java_client.service.local.AppiumServiceBuilder;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 
 public class Hooks {
@@ -34,7 +35,7 @@ public class Hooks {
         }
     }
 
-    public URL getAppiumServerUrl() {
-        return localAppiumServer.getUrl();
+    public URL getAppiumServerUrl() throws MalformedURLException {
+        return new URL("http://localhost:4723/wd/hub");
     }
 }
