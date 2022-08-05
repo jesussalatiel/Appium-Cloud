@@ -29,7 +29,7 @@ public class FirstAppiumTest
             capabilities.setCapability ( MobileCapabilityType.DEVICE_NAME , "Android Emulator" );
             capabilities.setCapability ( MobileCapabilityType.PLATFORM_NAME , "Android" );
             capabilities.setCapability ( MobileCapabilityType.PLATFORM_VERSION, "7.1.1" );
-            capabilities.setCapability ( "app",  new File (System.getProperty("user.dir") +"/apps/spotify.apk").getPath () );
+            capabilities.setCapability ( "app",  new File (System.getProperty("user.dir") +"/app/spotify.apk").getPath () );
             capabilities.setCapability ( MobileCapabilityType.NO_RESET , false );
             capabilities.setCapability ( MobileCapabilityType.FULL_RESET , false );
             driver = new AppiumDriver <> ( getAppiumServerUrl ( ) , capabilities );
