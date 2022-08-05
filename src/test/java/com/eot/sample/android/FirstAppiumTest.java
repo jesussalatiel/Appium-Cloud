@@ -5,6 +5,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class FirstAppiumTest
@@ -44,21 +45,22 @@ public class FirstAppiumTest
                 driver.findElementById ( "android:id/button1" )
                         .click ( );
             } catch (Exception e) {
-                System.out.println ( "Agree button not seen" );
+                driver.findElementById ( "com.google.android.apps.messaging:id/start_new_conversation_button" ).click ();
+                Thread.sleep ( 8000 );
             }
-            driver.findElementByAccessibilityId ( "Start chat" )
-                    .click ( );
-            driver.findElementByAccessibilityId ( "Switch between entering text and numbers" )
-                    .click ( );
-            driver.findElementById ( "com.google.android.apps.messaging:id/recipient_text_view" )
-                    .sendKeys ( "anand" );
-            waitFor ( 5 );
+            String setName = "Itzell Rangel";
+                driver.findElementById ( "com.google.android.apps.messaging:id/recipient_text_view" ).sendKeys ( setName );
+
+            String getText = driver.findElementById ( "com.google.android.apps.messaging:id/recipient_text_view" ).getText ();
+
+            System.out.println ( "---------------------->  " + ((getText.equals ( setName))?"Test Pass":"Test Failed")+ "  <----------------------------" );
+
             if ( null != driver ) {
                 System.out.println ( "Close the driver" );
                 driver.quit ( );
             }
         }catch (Exception e){
-            System.out.println ("Bad connection" );
+            System.out.println ("Bad connection: " + e.getMessage ());
         }
     }
 
