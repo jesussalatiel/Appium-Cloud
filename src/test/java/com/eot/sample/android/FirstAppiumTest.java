@@ -19,7 +19,7 @@ public class FirstAppiumTest
             // 1.1 Set the capabilities of the driver
             DesiredCapabilities capabilities = new DesiredCapabilities ( );
             capabilities.setCapability ( MobileCapabilityType.AUTOMATION_NAME ,
-                    "UiAutomator2" );
+                    "UiAutomator1" );
             capabilities.setCapability ( MobileCapabilityType.DEVICE_NAME ,
                     "emulator-5554" );
             capabilities.setCapability ( MobileCapabilityType.PLATFORM_NAME ,
@@ -46,9 +46,9 @@ public class FirstAppiumTest
                         .click ( );
             } catch (Exception e) {
                 driver.findElementById ( "com.google.android.apps.messaging:id/start_new_conversation_button" ).click ();
-                Thread.sleep ( 8000 );
+                //Thread.sleep ( 8000 );
             }
-            String setName = "Itzell Rangel";
+            String setName = "Jesus Salatiel";
                 driver.findElementById ( "com.google.android.apps.messaging:id/recipient_text_view" ).sendKeys ( setName );
 
             String getText = driver.findElementById ( "com.google.android.apps.messaging:id/recipient_text_view" ).getText ();

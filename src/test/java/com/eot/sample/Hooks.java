@@ -5,8 +5,10 @@ import io.appium.java_client.service.local.AppiumServiceBuilder;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
+import java.net.Inet4Address;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.UnknownHostException;
 
 public class Hooks {
     private static AppiumDriverLocalService localAppiumServer;
@@ -37,8 +39,10 @@ public class Hooks {
 
     public URL getAppiumServerUrl() {
         try {
-            return new URL("http://localhost:4444/wd/hub");
-        }catch (MalformedURLException e){
+            String host = Inet4Address.getLocalHost().getHostAddress ().toString ();
+            System.out.println("Remote Host: " +host);
+            return new URL("http://"+host+":4444/wd/hub");
+        }catch (MalformedURLException | UnknownHostException e){
             e.printStackTrace (  );
         }
         return null;
