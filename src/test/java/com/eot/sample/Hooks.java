@@ -37,7 +37,7 @@ public class Hooks {
 
     public URL getAppiumServerUrl() {
         try {
-            return new URL("http://localhost:4723/wd/hub");
+            return new URL("http://localhost:4444/wd/hub");
         }catch (MalformedURLException e){
             e.printStackTrace (  );
         }
