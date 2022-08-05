@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.io.File;
 import java.time.Duration;
 
 public class FirstAppiumTest
@@ -25,19 +26,13 @@ public class FirstAppiumTest
             DesiredCapabilities capabilities = new DesiredCapabilities ( );
             //capabilities.setCapability ( MobileCapabilityType.AUTOMATION_NAME ,
             //        "UiAutomator1" );
-            capabilities.setCapability ( MobileCapabilityType.DEVICE_NAME ,
-                    "Android Emulator" );
-            capabilities.setCapability ( MobileCapabilityType.PLATFORM_NAME ,
-                    "Android" );
+            capabilities.setCapability ( MobileCapabilityType.DEVICE_NAME , "Android Emulator" );
+            capabilities.setCapability ( MobileCapabilityType.PLATFORM_NAME , "Android" );
             capabilities.setCapability ( MobileCapabilityType.PLATFORM_VERSION, "7.1.1" );
-
-            capabilities.setCapability ( MobileCapabilityType.APP,  System.getProperty("user.dir") +"/assets/spotify.apk" );
-            capabilities.setCapability ( MobileCapabilityType.NO_RESET ,
-                    false );
-            capabilities.setCapability ( MobileCapabilityType.FULL_RESET ,
-                    false );
-            driver = new AppiumDriver <> ( getAppiumServerUrl ( ) ,
-                    capabilities );
+            capabilities.setCapability ( "app",  new File (System.getProperty("user.dir") +"/apps/spotify.apk").getPath () );
+            capabilities.setCapability ( MobileCapabilityType.NO_RESET , false );
+            capabilities.setCapability ( MobileCapabilityType.FULL_RESET , false );
+            driver = new AppiumDriver <> ( getAppiumServerUrl ( ) , capabilities );
 
             wait = new WebDriverWait ( driver, 30);
 
