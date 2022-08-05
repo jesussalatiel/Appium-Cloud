@@ -40,8 +40,7 @@ public class Hooks {
     public URL getAppiumServerUrl() {
         try {
             String host = Inet4Address.getLocalHost().getHostAddress ().toString ();
-            System.out.println("Remote Host: " +host);
-            return new URL("http://"+host+":4444/wd/hub");
+            return new URL("http://localhost:4444/wd/hub");
         }catch (MalformedURLException | UnknownHostException e){
             e.printStackTrace (  );
         }
