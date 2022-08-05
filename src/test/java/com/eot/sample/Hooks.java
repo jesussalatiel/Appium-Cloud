@@ -13,7 +13,7 @@ public class Hooks {
 
     @BeforeSuite
     public void beforeAll() {
-        System.out.println(String.format("Start local Appium server"));
+        /*System.out.println(String.format("Start local Appium server"));
         AppiumServiceBuilder serviceBuilder = new AppiumServiceBuilder();
         // Use any port, in case the default 4723 is already taken (maybe by another Appium server)
         serviceBuilder.usingAnyFreePort();
@@ -21,7 +21,7 @@ public class Hooks {
         localAppiumServer.start();
         System.out.println(String.format("Appium server started on url: '%s'",
                                          localAppiumServer.getUrl()
-                                                          .toString()));
+                                                          .toString()));*/
     }
 
     @AfterSuite
