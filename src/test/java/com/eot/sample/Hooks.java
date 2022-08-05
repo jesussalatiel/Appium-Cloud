@@ -35,7 +35,12 @@ public class Hooks {
         }
     }
 
-    public URL getAppiumServerUrl() throws MalformedURLException {
-        return new URL("http://localhost:4723/wd/hub");
+    public URL getAppiumServerUrl() {
+        try {
+            return new URL("http://localhost:4723/wd/hub");
+        }catch (MalformedURLException e){
+            e.printStackTrace (  );
+        }
+        return null;
     }
 }

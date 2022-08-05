@@ -19,4 +19,6 @@ jobs:
          uses: moatazeldebsy/appium-server-gitHub-action@V1.0.5
         
        - name: Run Test
-         run: mvn clean test
+         if: always()
+         run: mvn package
+         continue-on-error: true

@@ -26,8 +26,7 @@ public class Appium_Native_Android_MessagesTest
         String udid = "emulator-5554";
         log(String.format("Running test on '%s'",
                           udid));
-        driver = createAppiumDriver(getAppiumServerUrl(),
-                                    udid);
+        driver = createAppiumDriver(getAppiumServerUrl(), udid);
     }
 
     @AfterMethod
