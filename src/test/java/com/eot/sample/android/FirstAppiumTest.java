@@ -20,11 +20,9 @@ public class FirstAppiumTest
             capabilities.setCapability ( MobileCapabilityType.AUTOMATION_NAME ,
                     "UiAutomator2" );
             capabilities.setCapability ( MobileCapabilityType.DEVICE_NAME ,
-                    "Android Emulator" );
+                    "emulator-5554" );
             capabilities.setCapability ( MobileCapabilityType.PLATFORM_NAME ,
                     "Android" );
-            capabilities.setCapability ( MobileCapabilityType.PLATFORM_VERSION ,
-                    "7.1.1" );
             capabilities.setCapability ( AndroidMobileCapabilityType.APP_PACKAGE ,
                     "com.google.android.apps.messaging" );
             capabilities.setCapability ( AndroidMobileCapabilityType.APP_ACTIVITY ,
