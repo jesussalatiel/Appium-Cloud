@@ -11,9 +11,15 @@ jobs:
     steps:
       # need checkout before using compose-action
       - uses: actions/checkout@v3
-      - uses: isbang/compose-action@v1.1.0
+
+      - name: Build docker
+        run: docker-compose -f appium-grid-compose.yml up -d
+
+      - name: Sleep
+        uses: jakejarvis/wait-action@master
         with:
-          compose-file: "./appium-grid-compose.yml"
+        time: '60s'
+
       # Build Android App and Run Tests
       - name: Run Test
         run: mvn package
