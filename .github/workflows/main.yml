@@ -14,23 +14,22 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-          token: ${{ secrets.BUILD_SVC_PAT }}
-          
+
       - uses: actions/setup-node@v2
         with:
           node-version: '12'
       - run: |
-          npm install -g appium@v1.20.2
+          npm install -g appium@v1.22.3
           appium -v
           appium &>/dev/null &
       - name: Run Appium Tests
-        uses: reactivecircus/android-emulator-runner@v1
+        uses: reactivecircus/android-emulator-runner@v2.25.0
         with:
           api-level: ${{ matrix.api-level }}
           target: ${{ matrix.target }}
           arch: x86_64
           profile: Nexus 6
-          script: mvn clean test -Pandroid
+          script: mvn package
 
 
 
