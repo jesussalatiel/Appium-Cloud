@@ -30,3 +30,8 @@ This project includes the following tests implemented for Android & iOS devices:
 * [Appium_Native_iOS_HelloWorldTest.java](src/test/java/com/eot/sample/ios/Appium_Native_iOS_HelloWorldTest.java) - run an Appium test against the Messages app
 * [Appium_Web_iOS_HelloWorldTest.java](src/test/java/com/eot/sample/ios/Appium_Web_iOS_HelloWorldTest.java) - run 2 Appium tests, in parallel, using testng
 
+
+
+#### GitHub Actions - Cloud
+* [https://github.com/moatazeldebsy/Appium-TAU/tree/chapter11](Run on Cloud)
+
