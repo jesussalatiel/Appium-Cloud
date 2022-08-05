@@ -18,12 +18,13 @@ public class FirstAppiumTest
             // 1. Create a AppiumDriver
             // 1.1 Set the capabilities of the driver
             DesiredCapabilities capabilities = new DesiredCapabilities ( );
-            //capabilities.setCapability ( MobileCapabilityType.AUTOMATION_NAME ,
-             //       "UiAutomator1" );
+            capabilities.setCapability ( MobileCapabilityType.AUTOMATION_NAME ,
+                    "UiAutomator1" );
             capabilities.setCapability ( MobileCapabilityType.DEVICE_NAME ,
-                    "emulator-5554" );
+                    "Android Emulator" );
             capabilities.setCapability ( MobileCapabilityType.PLATFORM_NAME ,
                     "Android" );
+            capabilities.setCapability ( MobileCapabilityType.PLATFORM_VERSION, "7.1.1" );
             capabilities.setCapability ( AndroidMobileCapabilityType.APP_PACKAGE ,
                     "com.google.android.apps.messaging" );
             capabilities.setCapability ( AndroidMobileCapabilityType.APP_ACTIVITY ,

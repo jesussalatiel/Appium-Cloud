@@ -1,26 +1,12 @@
 name: Appium CI
-
 on: [push]
 
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  Automate:
     runs-on: ubuntu-latest
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    name: Appium Test
     steps:
-      # need checkout before using compose-action
-      - uses: actions/checkout@v2
-
-      - name: Build docker
-        run: docker-compose -f appium-grid-compose.yml up -d
-
-      - name: Sleep
-        uses: jakejarvis/wait-action@master
-        with:
-          time: '120s'
-
-      # Build Android App and Run Tests
-      - name: Run Test
-        run: mvn package
-        continue-on-error: true
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install and Run Appium Server
+        uses: moatazeldebsy/appium-server-gitHub-action@V1.0.5
