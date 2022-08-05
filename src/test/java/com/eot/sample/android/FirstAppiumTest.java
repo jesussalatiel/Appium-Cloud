@@ -19,6 +19,8 @@ public class FirstAppiumTest
 
     private AppiumDriver driver;
     public WebDriverWait wait;
+
+    private String app = "https://dw.uptodown.com/dwn/X2squymuacwklods30kSpzMGoHUXhioXMoG6x-kulpgqHrVJ3DpilV8bMSZOZyQJvgxS3xerEEKhT8UuD1FXv8z9DkCt05QT6ZM5yOxDp08-ZIxGoPwyuqxjS_LFz45i/F_7oz2lrZF3VeyJBbA4GimofiO4gJoFo8Tbmn5p7LjDIuk0ZLTECfBl841I7QZcQvcGld7XLKH0ET1hfaEChq2JSQZDRf70xzzE34Wm2AR4-UXfm0rPgDnr6IBPbV7uU/dSrRRY8f3vRgqJk8EiYz9_PaTMrxqOy5MTKlax7pMYQ0PffT65u5bhRopVxI3vFkFJ9Dpz_NaztaHHXuTvnxuQ==/";
     @Test
     public void runMessagesTest() {
         try {
@@ -31,7 +33,7 @@ public class FirstAppiumTest
             capabilities.setCapability ( MobileCapabilityType.PLATFORM_NAME , "Android" );
             capabilities.setCapability ( MobileCapabilityType.PLATFORM_VERSION, "7.1.1" );
             //capabilities.setCapability ( "app",  new File (System.getProperty("user.dir") +"/app/spotify.apk").getPath () );
-            capabilities.setCapability ( "app", "https://dw.uptodown.com/dwn/X2squymuacwklods30kSpzMGoHUXhioXMoG6x-kulpgqHrVJ3DpilV8bMSZOZyQJvgxS3xerEEKhT8UuD1FXv8z9DkCt05QT6ZM5yOxDp08-ZIxGoPwyuqxjS_LFz45i/F_7oz2lrZF3VeyJBbA4GimofiO4gJoFo8Tbmn5p7LjDIuk0ZLTECfBl841I7QZcQvcGld7XLKH0ET1hfaEChq2JSQZDRf70xzzE34Wm2AR4-UXfm0rPgDnr6IBPbV7uU/dSrRRY8f3vRgqJk8EiYz9_PaTMrxqOy5MTKlax7pMYQ0PffT65u5bhRopVxI3vFkFJ9Dpz_NaztaHHXuTvnxuQ==/" );
+            //capabilities.setCapability ( "app", app );
             capabilities.setCapability ( "androidInstallTimeout", 180000 );
             capabilities.setCapability ( MobileCapabilityType.NO_RESET , false );
             capabilities.setCapability ( MobileCapabilityType.FULL_RESET , false );
@@ -43,10 +45,8 @@ public class FirstAppiumTest
 
             // 2. Orchestrate the test scenario
             try {
-                Thread.sleep ( 15000 );
-
-                driver.launchApp ();
-
+                driver.installApp ( app );
+                 Thread.sleep ( 5000 );
                 System.out.println (driver.getPageSource () );
                 // Click on Login
                 /*By loginBy = By.xpath ( "//*[@text='Sign up free']" );
