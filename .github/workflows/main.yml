@@ -18,7 +18,7 @@ jobs:
       - name: Sleep
         uses: jakejarvis/wait-action@master
         with:
-        time: '60s'
+          time: '60s'
 
       # Build Android App and Run Tests
       - name: Run Test
