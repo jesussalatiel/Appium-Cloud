@@ -18,8 +18,8 @@ public class FirstAppiumTest
             // 1. Create a AppiumDriver
             // 1.1 Set the capabilities of the driver
             DesiredCapabilities capabilities = new DesiredCapabilities ( );
-            capabilities.setCapability ( MobileCapabilityType.AUTOMATION_NAME ,
-                    "UiAutomator1" );
+            //capabilities.setCapability ( MobileCapabilityType.AUTOMATION_NAME ,
+             //       "UiAutomator1" );
             capabilities.setCapability ( MobileCapabilityType.DEVICE_NAME ,
                     "emulator-5554" );
             capabilities.setCapability ( MobileCapabilityType.PLATFORM_NAME ,
@@ -46,7 +46,7 @@ public class FirstAppiumTest
                         .click ( );
             } catch (Exception e) {
                 driver.findElementById ( "com.google.android.apps.messaging:id/start_new_conversation_button" ).click ();
-                //Thread.sleep ( 8000 );
+                Thread.sleep ( 5000 );
             }
             String setName = "Jesus Salatiel";
                 driver.findElementById ( "com.google.android.apps.messaging:id/recipient_text_view" ).sendKeys ( setName );
@@ -55,6 +55,7 @@ public class FirstAppiumTest
 
             System.out.println ( "---------------------->  " + ((getText.equals ( setName))?"Test Pass":"Test Failed")+ "  <----------------------------" );
 
+            Assert.assertEquals ( getText, setName );
             if ( null != driver ) {
                 System.out.println ( "Close the driver" );
                 driver.quit ( );
