@@ -10,5 +10,5 @@ jobs:
 
             
 
-      #- uses: actions/checkout@v1
-      #- run: mvn package
+      - uses: actions/checkout@v1
+      - run: mvn package
