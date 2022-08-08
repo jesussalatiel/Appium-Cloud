@@ -28,8 +28,9 @@ public class FirstAppiumTest
             // 1. Create a AppiumDriver
             // 1.1 Set the capabilities of the driver
             DesiredCapabilities capabilities = new DesiredCapabilities ( );
-            capabilities.setCapability ( MobileCapabilityType.DEVICE_NAME , "Android Emulator" );
-            capabilities.setCapability ( MobileCapabilityType.PLATFORM_NAME , "Android" );
+            capabilities.setCapability ( MobileCapabilityType.DEVICE_NAME , "android" );
+            capabilities.setCapability("enableVNC", true);
+            //capabilities.setCapability ( MobileCapabilityType.PLATFORM_NAME , "Android" );
             capabilities.setCapability ( "app",  "https://github.com/jesussalatiel/Appium-Cloud/raw/main/notepad.apk"  );
             capabilities.setCapability ( "androidInstallTimeout", 180000 );
             capabilities.setCapability ( "newCommandTimeout", 180000 );
