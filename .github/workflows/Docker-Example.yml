@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build the stack
-        run: docker-compose -f Selenoid-Docker.yml up -d
+        run: docker network create selenoid; docker-compose -f Selenoid-Docker.yml up -d
 
       - name: is selenoid started?
         run: curl http://localhost:4723/status
