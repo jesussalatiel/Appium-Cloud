@@ -1,11 +1,11 @@
-name: Docker Compose Actions Workflow
-on: push
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
+on: [push]
 
-      - name: Build the stack
-        run: docker-compose -f appium-grid-compose.yml up -d; mvn package
-        
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    name: Run WDIO tests
+    steps:
+      - name: Start selenoid
+        uses: Xotabu4/selenoid-github-action@v2
+      - uses: actions/checkout@v1
+      - run: mvn package
