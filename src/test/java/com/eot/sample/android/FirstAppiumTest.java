@@ -24,16 +24,13 @@ public class FirstAppiumTest
     @Test
     public void runMessagesTest() {
         try {
-            File app = new File (System.getProperty("user.dir") +"/app/notepad.apk");
+            File app = new File (System.getProperty("user.dir") +"/notepad.apk");
             // 1. Create a AppiumDriver
             // 1.1 Set the capabilities of the driver
             DesiredCapabilities capabilities = new DesiredCapabilities ( );
-            //capabilities.setCapability ( MobileCapabilityType.AUTOMATION_NAME ,
-            //        "UiAutomator1" );
             capabilities.setCapability ( MobileCapabilityType.DEVICE_NAME , "Android Emulator" );
             capabilities.setCapability ( MobileCapabilityType.PLATFORM_NAME , "Android" );
-            capabilities.setCapability ( MobileCapabilityType.PLATFORM_VERSION, "7.1.1" );
-            capabilities.setCapability ( "app",  "/notepad.apk" );
+            capabilities.setCapability ( "app",  "https://github.com/jesussalatiel/Appium-Cloud/raw/main/notepad.apk"  );
             capabilities.setCapability ( "androidInstallTimeout", 180000 );
             capabilities.setCapability ( "newCommandTimeout", 180000 );
             capabilities.setCapability ( MobileCapabilityType.NO_RESET , false );
@@ -72,12 +69,6 @@ public class FirstAppiumTest
 
                 Assert.assertEquals ( getText, title, "Is not equals" );
 
-                // Validate "Sign up free" Button is Displayed
-                /*By assertMagicLinkBy = By.id ( "com.spotify.music:id/request_magiclink_lower_button" );
-
-                System.out.println ("-----------------------------------------> " + wait.until ( ExpectedConditions.visibilityOfElementLocated ( assertMagicLinkBy ) ).isDisplayed ( ) + " <--------------------------------");
-                Assert.assertTrue ( wait.until ( ExpectedConditions.visibilityOfElementLocated ( assertMagicLinkBy ) ).isDisplayed ( )  );
-*/
             } catch (Exception e) {
                 e.printStackTrace ();
             }
