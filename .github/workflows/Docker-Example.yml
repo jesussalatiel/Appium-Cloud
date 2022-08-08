@@ -11,7 +11,7 @@ jobs:
         continue-on-error: false
         with:
           selenoid-start-arguments: |
-            --args "-timeout 60s"
+            --browsers-json ./config/devices.json
             
 
       #- uses: actions/checkout@v1
