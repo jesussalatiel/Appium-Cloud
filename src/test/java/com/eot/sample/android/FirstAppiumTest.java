@@ -68,7 +68,10 @@ public class FirstAppiumTest
                 By checkText = By.xpath ( "//*[@text='"+title+"']" );
                 String getText = wait.until ( ExpectedConditions.visibilityOfElementLocated ( checkText ) ).getText ();
 
-                Assert.assertEquals ( getText, title, "Is not equals" );
+
+                String result = (getText.equalsIgnoreCase ( title)? "Test Passed": "Test Failed");
+                System.out.println ("-------------------------> "+result+" <-------------------------");
+
 
             } catch (Exception e) {
                 e.printStackTrace ();
