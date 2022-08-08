@@ -9,6 +9,7 @@ services:
     volumes:
       - "./config:/etc/selenoid" # assumed current dir contains browsers.json
       - "/var/run/docker.sock:/var/run/docker.sock"
+    command: ["-conf", "/etc/selenoid/browsers.json", "-video-output-dir", "/opt/selenoid/video"]
 
   selenoid-ui:
     image: "aerokube/selenoid-ui"
@@ -18,3 +19,13 @@ services:
     ports:
       - "8080:8080"
     command: [ "--selenoid-uri", "http://selenoid:4444" ]
+
+  android_7:
+    image: "selenoid/android:7.0"
+    container_name: Android
+    links:
+      - selenoid
+      - selenoid-ui
+    depends_on:
+      - selenoid
+      - selenoid-ui
