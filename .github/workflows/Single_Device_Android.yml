@@ -1,4 +1,4 @@
-name: Appium CI
+name: Appium CI - Android
 on: [ push ]
 
 jobs:
@@ -6,8 +6,14 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        api-level: [ 25 ]
-        target: [ default ]
+        api-level: [22, 25, 28]
+        include:
+          - EMULATOR_API: 28
+            EMULATOR_ARCH: x86_64
+          - EMULATOR_API: 25
+            EMULATOR_ARCH: x86
+          - EMULATOR_API: 22
+            EMULATOR_ARCH: x86
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.8
@@ -22,14 +28,17 @@ jobs:
           npm install -g appium@v1.22.3
           appium -v
           appium &>/dev/null &
-      - name: Run Appium Tests
+      - name: Execute emulator tests
+        timeout-minutes: 30
         uses: reactivecircus/android-emulator-runner@v2.25.0
         with:
           api-level: ${{ matrix.api-level }}
-          target: ${{ matrix.target }}
-          arch: x86_64
+          arch: ${{ matrix.EMULATOR_ARCH }}
+          disable-animations: true
           profile: Nexus 6
+          emulator-options: -no-snapshot -no-window -no-boot-anim -camera-back none -camera-front none -gpu swiftshader_indirect
           script: mvn package
+
 
 
 

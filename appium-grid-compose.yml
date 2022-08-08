@@ -10,8 +10,8 @@ services:
     depends_on:
       - selenium_hub
     volumes:
-      - ./assets/spotify.apk:/opt/spotify.apk
-      - ./video-nexus_7.1.1:/tmp/video
+      - ./app/notepad.apk:/opt/notepad.apk
+      #- ./video-nexus_7.1.1:/tmp/video
     ports:
       - "6080:6080"
     environment:

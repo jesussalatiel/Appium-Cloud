@@ -12,6 +12,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.File;
+import java.net.URL;
 import java.time.Duration;
 
 public class FirstAppiumTest
@@ -20,10 +21,10 @@ public class FirstAppiumTest
     private AppiumDriver driver;
     public WebDriverWait wait;
 
-    private String app = "https://dw.uptodown.com/dwn/X2squymuacwklods30kSpzMGoHUXhioXMoG6x-kulpgqHrVJ3DpilV8bMSZOZyQJvgxS3xerEEKhT8UuD1FXv8z9DkCt05QT6ZM5yOxDp08-ZIxGoPwyuqxjS_LFz45i/F_7oz2lrZF3VeyJBbA4GimofiO4gJoFo8Tbmn5p7LjDIuk0ZLTECfBl841I7QZcQvcGld7XLKH0ET1hfaEChq2JSQZDRf70xzzE34Wm2AR4-UXfm0rPgDnr6IBPbV7uU/dSrRRY8f3vRgqJk8EiYz9_PaTMrxqOy5MTKlax7pMYQ0PffT65u5bhRopVxI3vFkFJ9Dpz_NaztaHHXuTvnxuQ==/";
     @Test
     public void runMessagesTest() {
         try {
+            File app = new File (System.getProperty("user.dir") +"/app/notepad.apk");
             // 1. Create a AppiumDriver
             // 1.1 Set the capabilities of the driver
             DesiredCapabilities capabilities = new DesiredCapabilities ( );
@@ -32,8 +33,7 @@ public class FirstAppiumTest
             capabilities.setCapability ( MobileCapabilityType.DEVICE_NAME , "Android Emulator" );
             capabilities.setCapability ( MobileCapabilityType.PLATFORM_NAME , "Android" );
             capabilities.setCapability ( MobileCapabilityType.PLATFORM_VERSION, "7.1.1" );
-            //capabilities.setCapability ( "app",  new File (System.getProperty("user.dir") +"/app/spotify.apk").getPath () );
-            //capabilities.setCapability ( "app", app );
+            capabilities.setCapability ( "app",  "/opt/notepad.apk" );
             capabilities.setCapability ( "androidInstallTimeout", 180000 );
             capabilities.setCapability ( "newCommandTimeout", 180000 );
             capabilities.setCapability ( MobileCapabilityType.NO_RESET , false );
@@ -46,27 +46,34 @@ public class FirstAppiumTest
 
             // 2. Orchestrate the test scenario
             try {
-                driver.installApp ( app );
-                 Thread.sleep ( 5000 );
-                System.out.println (driver.getPageSource () );
-                // Click on Login
-                /*By loginBy = By.xpath ( "//*[@text='Sign up free']" );
-                wait.until ( ExpectedConditions.visibilityOfElementLocated ( loginBy ) ).click ( );
+                String title = "test@test.com";
 
-                // Enter user
-                By enterUserBy = By.id ( "com.spotify.music:id/email" );
-                wait.until ( ExpectedConditions.visibilityOfElementLocated ( enterUserBy ) ).sendKeys ( "test@test.com" );
+                driver.launchApp ();
 
-                // Click on Login
-                By submitBy = By.id ( "com.spotify.music:id/email_next_button" );
-                wait.until ( ExpectedConditions.visibilityOfElementLocated ( submitBy ) ).click ( );
+                // Click on Add Note
+                By addBy = By.id ( "com.onto.notepad:id/add_note" );
+                wait.until ( ExpectedConditions.visibilityOfElementLocated ( addBy ) ).click ( );
 
-                // Go to Login
-                By goToLoginBy = By.id ( "com.spotify.music:id/button_positive" );
+                // Enter Title
+                By enterUserBy = By.id ( "com.onto.notepad:id/titleEdit" );
+                wait.until ( ExpectedConditions.visibilityOfElementLocated ( enterUserBy ) ).sendKeys ( title );
+
+                // Enter Content
+                By submitBy = By.id ( "com.onto.notepad:id/contentEdit" );
+                wait.until ( ExpectedConditions.visibilityOfElementLocated ( submitBy ) ).sendKeys ( "Jesus Salatiel" );
+
+                // Click on save note
+                By goToLoginBy = By.id ( "com.onto.notepad:id/save_note" );
                 wait.until ( ExpectedConditions.visibilityOfElementLocated ( goToLoginBy ) ).click ( );
 
+
+                By checkText = By.xpath ( "//*[@text='"+title+"']" );
+                String getText = wait.until ( ExpectedConditions.visibilityOfElementLocated ( checkText ) ).getText ();
+
+                Assert.assertEquals ( getText, title, "Is not equals" );
+
                 // Validate "Sign up free" Button is Displayed
-                By assertMagicLinkBy = By.id ( "com.spotify.music:id/request_magiclink_lower_button" );
+                /*By assertMagicLinkBy = By.id ( "com.spotify.music:id/request_magiclink_lower_button" );
 
                 System.out.println ("-----------------------------------------> " + wait.until ( ExpectedConditions.visibilityOfElementLocated ( assertMagicLinkBy ) ).isDisplayed ( ) + " <--------------------------------");
                 Assert.assertTrue ( wait.until ( ExpectedConditions.visibilityOfElementLocated ( assertMagicLinkBy ) ).isDisplayed ( )  );
