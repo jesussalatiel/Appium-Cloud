@@ -21,14 +21,3 @@ services:
     ports:
       - "8080:8080"
     command: ["--selenoid-uri", "http://selenoid:4444"]
-  chrome_79.0:
-    image: "selenoid/vnc:chrome_79.0"
-    container_name: chrome_79.0
-    links:
-      - selenoid
-      - selenoid-ui
-    depends_on:
-      - selenoid
-      - selenoid-ui
-    volumes:
-      - "/dev/shm:/dev/shm"
