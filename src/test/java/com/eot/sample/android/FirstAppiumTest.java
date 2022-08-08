@@ -33,7 +33,7 @@ public class FirstAppiumTest
             capabilities.setCapability ( MobileCapabilityType.DEVICE_NAME , "Android Emulator" );
             capabilities.setCapability ( MobileCapabilityType.PLATFORM_NAME , "Android" );
             capabilities.setCapability ( MobileCapabilityType.PLATFORM_VERSION, "7.1.1" );
-            capabilities.setCapability ( "app",  "/opt/notepad.apk" );
+            capabilities.setCapability ( "app",  "/notepad.apk" );
             capabilities.setCapability ( "androidInstallTimeout", 180000 );
             capabilities.setCapability ( "newCommandTimeout", 180000 );
             capabilities.setCapability ( MobileCapabilityType.NO_RESET , false );

@@ -10,7 +10,7 @@ services:
     depends_on:
       - selenium_hub
     volumes:
-      - ./app/notepad.apk:/opt/notepad.apk
+      - ./notepad.apk:/tmp/notepad.apk
       #- ./video-nexus_7.1.1:/tmp/video
     ports:
       - "6080:6080"
