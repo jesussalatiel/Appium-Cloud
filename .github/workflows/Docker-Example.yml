@@ -12,7 +12,7 @@ jobs:
         with:
           selenoid-start-arguments: |
             --args "-timeout 60s"
-            --browsers 'chrome' --last-versions 1
+            
 
       #- uses: actions/checkout@v1
       #- run: mvn package
