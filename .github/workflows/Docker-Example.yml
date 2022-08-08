@@ -5,10 +5,13 @@ jobs:
     runs-on: ubuntu-latest
     name: Run WDIO tests
     steps:
-      - name: Start selenoid
-        uses: Xotabu4/selenoid-github-action@v2
+      - uses: actions/checkout@v2
+      - name: Build the stack
+        run: docker-compose -f .\Selenoid-Docker.yml up -d
 
-            
+      - name: is selenoid started?
+        run: curl http://localhost:4444/status
+
 
       - uses: actions/checkout@v1
       - run: mvn package
