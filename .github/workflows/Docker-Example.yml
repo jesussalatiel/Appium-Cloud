@@ -10,7 +10,7 @@ jobs:
         run:  docker-compose -f Selenoid-Docker.yml up -d
 
       - name: is selenoid started?
-        run: curl http://localhost:4723/status
+        run: curl http://localhost:4444/status
 
       - uses: actions/checkout@v1
       - run: mvn package
